@@ -21,8 +21,9 @@ public class Main {
         context.getBean(BeanF.class);
 
         System.out.println("\nBeans configured by properties:");
-        System.out.println(context.getBean(BeanB.class));
-        System.out.println(context.getBean(BeanC.class));
-        System.out.println(context.getBean(BeanD.class));
+        Stream.of(context.getBeanDefinitionNames()).forEach(name -> System.out.println(context.getBean(name)));
+        System.out.println();
+
+        ((AnnotationConfigApplicationContext) context).close();
     }
 }

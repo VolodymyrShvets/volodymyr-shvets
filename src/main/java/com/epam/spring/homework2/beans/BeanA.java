@@ -7,25 +7,33 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BeanA extends BaseBean implements BeanNameAware, InitializingBean, DisposableBean {
-    private String beanName;
-
     public BeanA() {
-        System.out.println("Bean A no args constructor");
+        System.out.println(this.getClass().getSimpleName() + " -> no args constructor");
     }
 
     @Override
-    public void setBeanName(String beanName) {
-        this.beanName = beanName;
+    public void setBeanName(String s) {
+        beanName = s;
     }
 
     @Override
     public void afterPropertiesSet() {
-        System.out.println("Bean A initializingBean afterPropertiesSet method");
+        System.out.println(beanName + " -> initializingBean afterPropertiesSet method");
+    }
+
+    @Override
+    public void postConstruct() {
+
+    }
+
+    @Override
+    public void preDestroy() {
+
     }
 
     @Override
     public void destroy() {
-        System.out.println("Bean A disposableBean destroy method");
+        System.out.println(beanName + " -> disposableBean destroy method");
     }
 
     @Override
