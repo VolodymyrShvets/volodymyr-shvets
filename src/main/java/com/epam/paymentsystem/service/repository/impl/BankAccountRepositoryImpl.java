@@ -1,5 +1,6 @@
 package com.epam.paymentsystem.service.repository.impl;
 
+import com.epam.paymentsystem.service.exception.BankAccountNotFoundException;
 import com.epam.paymentsystem.service.model.BankAccount;
 import com.epam.paymentsystem.service.model.enums.Status;
 import com.epam.paymentsystem.service.repository.BankAccountRepository;
@@ -18,7 +19,7 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
                 .filter(
                         bankAccount -> String.valueOf(bankAccount.getAccountID()).equals(bankAccountID))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("BankAccount is not found!"));
+                .orElseThrow(BankAccountNotFoundException::new);
     }
 
     @Override
