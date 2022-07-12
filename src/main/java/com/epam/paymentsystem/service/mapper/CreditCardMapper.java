@@ -9,7 +9,7 @@ import org.mapstruct.factory.Mappers;
 public interface CreditCardMapper {
     CreditCardMapper INSTANCE = Mappers.getMapper(CreditCardMapper.class);
 
-    CreditCardDTO mapCreditCardDto(CreditCard author);
+    CreditCardDTO mapCreditCardDto(CreditCard card);
 
-    CreditCard mapCreditCard(CreditCardDTO authorDto);
+    CreditCard mapCreditCard(CreditCardDTO cardDto);
 }

@@ -9,7 +9,7 @@ import org.mapstruct.factory.Mappers;
 public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
-    UserDTO mapUserDto(User author);
+    UserDTO mapUserDto(User user);
 
-    User mapUser(UserDTO authorDto);
+    User mapUser(UserDTO userDto);
 }

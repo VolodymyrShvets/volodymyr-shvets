@@ -10,6 +10,7 @@ import lombok.Data;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
 @Data
@@ -17,13 +18,13 @@ import javax.validation.constraints.Null;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDTO {
 
-    @NotBlank(message = "'id' shouldn't be empty", groups = OnCreate.class)
+    @NotNull(message = "'id' shouldn't be empty", groups = OnCreate.class)
     private long userID;
 
-    @NotBlank(message = "'status' shouldn't be empty", groups = OnCreate.class)
+    @NotNull(message = "'status' shouldn't be empty", groups = OnCreate.class)
     private Status status;
 
-    @NotBlank(message = "'userRole' shouldn't be empty", groups = OnCreate.class)
+    @NotNull(message = "'userRole' shouldn't be empty", groups = OnCreate.class)
     private UserRole userRole;
 
     @NotBlank(message = "'firstName' shouldn't be empty", groups = OnCreate.class)

@@ -4,8 +4,9 @@ import com.epam.paymentsystem.api.BankAccountApi;
 import com.epam.paymentsystem.service.BankAccountService;
 import com.epam.paymentsystem.service.model.BankAccount;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
