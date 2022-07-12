@@ -2,6 +2,7 @@ package com.epam.paymentsystem.service.impl;
 
 import com.epam.paymentsystem.controller.dto.UserDTO;
 import com.epam.paymentsystem.service.UserService;
+import com.epam.paymentsystem.service.mapper.UserMapper;
 import com.epam.paymentsystem.service.model.User;
 import com.epam.paymentsystem.service.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +21,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO getUser(String email) {
         log.info("getUser by email {}", email);
-        User user = userRepository.getUser(email);
-        return mapUserToUserDto(user);
+        return UserMapper.INSTANCE.mapUserDto(userRepository.getUser(email));
     }
 
     @Override
@@ -29,24 +29,23 @@ public class UserServiceImpl implements UserService {
         log.info("get all users");
         return userRepository.listUsers()
                 .stream()
-                .map(this::mapUserToUserDto)
+                .map(UserMapper.INSTANCE::mapUserDto)//this::mapUserToUserDto)
                 .collect(Collectors.toList());
     }
 
     @Override
     public UserDTO createUser(UserDTO userDto) {
         log.info("createUser with email {}", userDto.getEmail());
-        User user = mapUserDtoToUser(userDto);
-        user = userRepository.createUser(user);
-        return mapUserToUserDto(user);
+        User user = userRepository.createUser(UserMapper.INSTANCE.mapUser(userDto));
+        return UserMapper.INSTANCE.mapUserDto(user);
     }
 
     @Override
     public UserDTO updateUser(String email, UserDTO userDto) {
         log.info("updateUser with email {}", email);
-        User user = mapUserDtoToUser(userDto);
+        User user = UserMapper.INSTANCE.mapUser(userDto);
         user = userRepository.updateUser(email, user);
-        return mapUserToUserDto(user);
+        return UserMapper.INSTANCE.mapUserDto(user);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.epam.paymentsystem.service.impl;
 
 import com.epam.paymentsystem.controller.dto.CreditCardDTO;
 import com.epam.paymentsystem.service.CreditCardService;
+import com.epam.paymentsystem.service.mapper.CreditCardMapper;
 import com.epam.paymentsystem.service.model.CreditCard;
 import com.epam.paymentsystem.service.repository.CreditCardRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +21,8 @@ public class CreditCardServiceImpl implements CreditCardService {
     @Override
     public CreditCardDTO createCard(CreditCardDTO creditCardDTO) {
         log.info("createCreditCard with CardNumber {}", creditCardDTO.getCardNumber());
-        CreditCard creditCard = mapCardDtoToCard(creditCardDTO);
-        creditCard = creditCardRepository.createCard(creditCard);
-        return mapCardToCardDto(creditCard);
+        CreditCard creditCard = creditCardRepository.createCard(CreditCardMapper.INSTANCE.mapCreditCard(creditCardDTO));
+        return CreditCardMapper.INSTANCE.mapCreditCardDto(creditCard);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class CreditCardServiceImpl implements CreditCardService {
         log.info("get all creditCards for account {}", accountID);
         return creditCardRepository.listCards(accountID)
                 .stream()
-                .map(this::mapCardToCardDto)
+                .map(CreditCardMapper.INSTANCE::mapCreditCardDto)
                 .collect(Collectors.toList());
     }
 

@@ -1,5 +1,6 @@
 package com.epam.paymentsystem.service.repository.impl;
 
+import com.epam.paymentsystem.service.exception.UserNotFoundException;
 import com.epam.paymentsystem.service.model.User;
 import com.epam.paymentsystem.service.repository.UserRepository;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,7 @@ public class UserRepositoryImpl implements UserRepository {
         return list.stream()
                 .filter(user -> user.getEmail().equals(email))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("User is not found!"));
+                .orElseThrow(UserNotFoundException::new);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class UserRepositoryImpl implements UserRepository {
         if (isDeleted) {
             list.add(user);
         } else {
-            throw new RuntimeException("User is not found!");
+            throw new UserNotFoundException();
         }
         return user;
     }

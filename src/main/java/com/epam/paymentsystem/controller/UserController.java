@@ -1,16 +1,21 @@
 package com.epam.paymentsystem.controller;
 
+import com.epam.paymentsystem.api.UserApi;
 import com.epam.paymentsystem.controller.dto.UserDTO;
+import com.epam.paymentsystem.controller.dto.group.OnCreate;
+import com.epam.paymentsystem.controller.dto.group.OnUpdate;
 import com.epam.paymentsystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-public class UserController {
+public class UserController implements UserApi {
     private UserService userService;
 
     @Autowired
@@ -18,31 +23,28 @@ public class UserController {
         this.userService = userService;
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/user")
+    @Override
     public List<UserDTO> getAllUsers() {
         return userService.listUsers();
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/user/{email}")
+    @Override
     public UserDTO getUser(@PathVariable String email) {
         return userService.getUser(email);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(value = "/user")
-    public UserDTO createUser(@RequestBody UserDTO userDto) {
+    @Override
+    public UserDTO createUser(@RequestBody @Validated(OnCreate.class) UserDTO userDto) {
         return userService.createUser(userDto);
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @PutMapping(value = "/user/{email}")
-    public UserDTO updateUser(@PathVariable String email, @RequestBody UserDTO userDto) {
+    @Override
+    public UserDTO updateUser(@PathVariable String email,
+                              @RequestBody @Validated(OnUpdate.class) UserDTO userDto) {
         return userService.updateUser(email, userDto);
     }
 
-    @DeleteMapping(value = "/user/{email}")
+    @Override
     public ResponseEntity<Void> deleteUser(@PathVariable String email) {
         userService.deleteUser(email);
         return ResponseEntity.noContent().build();
