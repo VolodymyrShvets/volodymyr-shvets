@@ -3,9 +3,27 @@ package com.epam.paymentsystem.service.model;
 import com.epam.paymentsystem.service.model.enums.RequestType;
 import lombok.Data;
 
+import javax.persistence.*;
+
 @Data
-public class UserRequest {
-    private long requestID;
-    private long requestedSourceID; // UserID or AccountID
-    private RequestType type;
+@Entity
+public class UserRequest extends Request {
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @Override
+    public long getRequestID() {
+        return super.requestID;
+    }
+
+    @Override
+    public long getRequestedSourceID() {
+        return user.getID();
+    }
+
+    @Override
+    public RequestType getType() {
+        return RequestType.USER;
+    }
 }

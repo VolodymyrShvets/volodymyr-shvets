@@ -1,6 +1,6 @@
 package com.epam.paymentsystem.controller;
 
-import com.epam.paymentsystem.api.PaymentApi;
+import com.epam.paymentsystem.service.api.PaymentApi;
 import com.epam.paymentsystem.service.PaymentService;
 import com.epam.paymentsystem.service.model.Payment;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -19,7 +19,7 @@ import javax.validation.constraints.Null;
 public class UserDTO {
 
     @NotNull(message = "'id' shouldn't be empty", groups = OnCreate.class)
-    private long userID;
+    private long ID;
 
     @NotNull(message = "'status' shouldn't be empty", groups = OnCreate.class)
     private Status status;

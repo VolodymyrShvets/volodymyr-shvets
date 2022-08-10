@@ -1,13 +1,7 @@
 package com.epam.paymentsystem.service.repository;
 
-import com.epam.paymentsystem.service.model.UserRequest;
+import com.epam.paymentsystem.service.model.Request;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-public interface RequestRepository {
-    UserRequest createRequest(UserRequest request);
-
-    List<UserRequest> listRequests();
-
-    void deleteRequest(String requestID);
+public interface RequestRepository extends JpaRepository<Request, Long> {
 }

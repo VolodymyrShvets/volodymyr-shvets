@@ -1,4 +1,4 @@
-package com.epam.paymentsystem.api.config;
+package com.epam.paymentsystem.service.api.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

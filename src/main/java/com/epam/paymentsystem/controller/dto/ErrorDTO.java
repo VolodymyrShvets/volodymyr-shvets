@@ -1,6 +1,5 @@
 package com.epam.paymentsystem.controller.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

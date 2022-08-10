@@ -1,18 +1,17 @@
 package com.epam.paymentsystem.service.repository.impl;
 
-import com.epam.paymentsystem.service.exception.UserNotFoundException;
+import com.epam.paymentsystem.service.exception.notfound.UserNotFoundException;
 import com.epam.paymentsystem.service.model.User;
-import com.epam.paymentsystem.service.repository.UserRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class UserRepositoryImpl implements UserRepository {
+public class UserRepositoryImpl {//implements UserRepository {
     private final List<User> list = new ArrayList<>();
 
-    @Override
+    //@Override
     public User getUser(String email) {
         return list.stream()
                 .filter(user -> user.getEmail().equals(email))
@@ -20,18 +19,18 @@ public class UserRepositoryImpl implements UserRepository {
                 .orElseThrow(UserNotFoundException::new);
     }
 
-    @Override
+    //@Override
     public List<User> listUsers() {
         return new ArrayList<>(list);
     }
 
-    @Override
+    //@Override
     public User createUser(User user) {
         list.add(user);
         return user;
     }
 
-    @Override
+    //@Override
     public User updateUser(String email, User user) {
         boolean isDeleted = list.removeIf(u -> u.getEmail().equals(email));
         if (isDeleted) {
@@ -42,7 +41,7 @@ public class UserRepositoryImpl implements UserRepository {
         return user;
     }
 
-    @Override
+    //@Override
     public void deleteUser(String email) {
         list.removeIf(user -> user.getEmail().equals(email));
     }

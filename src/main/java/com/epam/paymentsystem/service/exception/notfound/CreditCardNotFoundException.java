@@ -1,11 +1,12 @@
-package com.epam.paymentsystem.service.exception;
+package com.epam.paymentsystem.service.exception.notfound;
 
+import com.epam.paymentsystem.service.exception.ServiceException;
 import com.epam.paymentsystem.service.model.enums.ErrorType;
 
-public class UserNotFoundException extends ServiceException {
+public class CreditCardNotFoundException extends ServiceException {
     private static final String DEFAULT_MESSAGE = "User is not found!";
 
-    public UserNotFoundException() {
+    public CreditCardNotFoundException() {
         super(DEFAULT_MESSAGE);
     }
 

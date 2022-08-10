@@ -11,22 +11,22 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component
-public class PaymentRepositoryImpl implements PaymentRepository {
+public class PaymentRepositoryImpl {//implements PaymentRepository {
     private final List<Payment> list = new ArrayList<>();
 
-    @Override
+    //@Override
     public Payment createPayment(Payment payment) {
         list.add(payment);
         return payment;
     }
 
-    @Override
+    /*@Override
     public List<Payment> listPayments(String userID) {
-        List<Payment> userPayments1 = list.stream().filter(payment -> String.valueOf(payment.getSenderID()).equals(userID)).collect(Collectors.toList());
-        List<Payment> userPayments2 = list.stream().filter(payment -> String.valueOf(payment.getReceiverID()).equals(userID)).collect(Collectors.toList());
+        //List<Payment> userPayments1 = list.stream().filter(payment -> String.valueOf(payment.getSenderID()).equals(userID)).collect(Collectors.toList());
+        //List<Payment> userPayments2 = list.stream().filter(payment -> String.valueOf(payment.getReceiverID()).equals(userID)).collect(Collectors.toList());
 
         return Stream.concat(userPayments1.stream(), userPayments2.stream())
                 .sorted(Comparator.comparing(Payment::getPaymentDate))
                 .collect(Collectors.toList());
-    }
+    }*/
 }

@@ -1,17 +1,14 @@
 package com.epam.paymentsystem.service.repository;
 
 import com.epam.paymentsystem.service.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.Optional;
 
-public interface UserRepository {
-    User getUser(String email);
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByEmail(String email);
 
-    List<User> listUsers();
-
-    User createUser(User user);
-
-    User updateUser(String email, User user);
-
-    void deleteUser(String email);
+    boolean existsByEmail(String email);
 }
