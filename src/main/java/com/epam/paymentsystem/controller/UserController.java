@@ -1,6 +1,6 @@
 package com.epam.paymentsystem.controller;
 
-import com.epam.paymentsystem.api.UserApi;
+import com.epam.paymentsystem.service.api.UserApi;
 import com.epam.paymentsystem.controller.dto.UserDTO;
 import com.epam.paymentsystem.controller.dto.group.OnCreate;
 import com.epam.paymentsystem.controller.dto.group.OnUpdate;

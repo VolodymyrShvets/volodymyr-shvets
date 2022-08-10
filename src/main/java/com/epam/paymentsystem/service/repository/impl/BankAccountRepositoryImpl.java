@@ -1,6 +1,6 @@
 package com.epam.paymentsystem.service.repository.impl;
 
-import com.epam.paymentsystem.service.exception.BankAccountNotFoundException;
+import com.epam.paymentsystem.service.exception.notfound.BankAccountNotFoundException;
 import com.epam.paymentsystem.service.model.BankAccount;
 import com.epam.paymentsystem.service.model.enums.Status;
 import com.epam.paymentsystem.service.repository.BankAccountRepository;
@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class BankAccountRepositoryImpl implements BankAccountRepository {
+public class BankAccountRepositoryImpl {//implements BankAccountRepository {
     private final List<BankAccount> list = new ArrayList<>();
 
-    @Override
+    //@Override
     public BankAccount getBankAccount(String bankAccountID) {
         return list.stream()
                 .filter(
@@ -22,25 +22,25 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
                 .orElseThrow(BankAccountNotFoundException::new);
     }
 
-    @Override
+    //@Override
     public BankAccount createBankAccount(BankAccount bankAccount) {
         list.add(bankAccount);
         return bankAccount;
     }
 
-    @Override
+    //@Override
     public List<BankAccount> listAccounts(String userID) {
         return new ArrayList<>(list);
     }
 
-    @Override
+    //@Override
     public BankAccount blockAccount(String bankAccountID) {
         BankAccount account = getBankAccount(bankAccountID);
         account.setStatus(Status.BLOCKED);
         return account;
     }
 
-    @Override
+    //@Override
     public BankAccount unblockAccount(String bankAccountID) {
         BankAccount account = getBankAccount(bankAccountID);
         account.setStatus(Status.ACTIVE);

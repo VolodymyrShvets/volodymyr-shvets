@@ -1,8 +1,8 @@
 package com.epam.paymentsystem.controller;
 
-import com.epam.paymentsystem.api.RequestApi;
+import com.epam.paymentsystem.service.api.RequestApi;
 import com.epam.paymentsystem.service.RequestService;
-import com.epam.paymentsystem.service.model.UserRequest;
+import com.epam.paymentsystem.service.model.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,12 +21,27 @@ public class RequestController implements RequestApi {
     }
 
     @Override
-    public UserRequest createRequest(@RequestBody UserRequest request) {
+    public Request createRequest(@RequestBody Request request) {
         return requestService.createRequest(request);
     }
 
+    /*@Override
+    public Request createRequest(Request request) {
+        return request;
+    }*/
+
+    /*@Override
+    public Request createUserRequest(UserRequest request) {
+        return requestService.createUserRequest(request);
+    }
+
     @Override
-    public List<UserRequest> listRequests() {
+    public Request createAccountRequest(AccountRequest request) {
+        return requestService.createAccountRequest(request);
+    }*/
+
+    @Override
+    public List<Request> listRequests() {
         return requestService.listRequests();
     }
 

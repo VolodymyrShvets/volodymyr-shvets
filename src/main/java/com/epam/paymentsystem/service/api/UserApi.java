@@ -1,4 +1,4 @@
-package com.epam.paymentsystem.api;
+package com.epam.paymentsystem.service.api;
 
 import com.epam.paymentsystem.controller.dto.UserDTO;
 import io.swagger.annotations.Api;
@@ -26,7 +26,7 @@ public interface UserApi {
 
     @ApiOperation("Update user")
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping(value = "/{email}")
+    @PatchMapping(value = "/{email}")
     UserDTO updateUser(@PathVariable String email, @RequestBody UserDTO userDto);
 
     @ApiOperation("Delete user")

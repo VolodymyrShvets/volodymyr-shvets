@@ -1,6 +1,6 @@
-package com.epam.paymentsystem.api;
+package com.epam.paymentsystem.service.api;
 
-import com.epam.paymentsystem.service.model.UserRequest;
+import com.epam.paymentsystem.service.model.Request;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -21,12 +21,22 @@ public interface RequestApi {
     @ApiOperation("Create request")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    UserRequest createRequest(@RequestBody UserRequest request);
+    Request createRequest(@RequestBody Request request);
+
+    /*@ApiOperation("Create User request")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    Request createUserRequest(UserRequest request);
+
+    @ApiOperation("Create Account request")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    Request createAccountRequest(AccountRequest request);*/
 
     @ApiOperation("Get all requests")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
-    List<UserRequest> listRequests();
+    List<Request> listRequests();
 
     @ApiOperation("Delete request")
     @DeleteMapping(value = "/{requestID}")

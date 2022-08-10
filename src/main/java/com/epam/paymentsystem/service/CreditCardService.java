@@ -8,4 +8,6 @@ public interface CreditCardService {
     CreditCardDTO createCard(CreditCardDTO creditCardDTO);
 
     List<CreditCardDTO> listCards(String accountID);
+
+    CreditCardDTO updateCard(CreditCardDTO creditCardDTO);
 }

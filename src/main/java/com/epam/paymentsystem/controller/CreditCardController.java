@@ -1,6 +1,6 @@
 package com.epam.paymentsystem.controller;
 
-import com.epam.paymentsystem.api.CreditCardApi;
+import com.epam.paymentsystem.service.api.CreditCardApi;
 import com.epam.paymentsystem.controller.dto.CreditCardDTO;
 import com.epam.paymentsystem.service.CreditCardService;
 import org.springframework.beans.factory.annotation.Autowired;

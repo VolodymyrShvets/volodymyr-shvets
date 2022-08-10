@@ -12,7 +12,7 @@ public class CreditCardMapperImpl implements CreditCardMapper {
 
         return CreditCardDTO.builder()
                 .cardNumber(card.getCardNumber())
-                .accountID(card.getAccountID())
+                .account(card.getAccount())
                 .expirationDate(card.getExpirationDate())
                 .moneyAmount(card.getMoneyAmount())
                 .build();
@@ -25,7 +25,7 @@ public class CreditCardMapperImpl implements CreditCardMapper {
 
         return CreditCard.builder()
                 .cardNumber(cardDto.getCardNumber())
-                .accountID(cardDto.getAccountID())
+                .account(cardDto.getAccount())
                 .expirationDate(cardDto.getExpirationDate())
                 .moneyAmount(cardDto.getMoneyAmount())
                 .build();

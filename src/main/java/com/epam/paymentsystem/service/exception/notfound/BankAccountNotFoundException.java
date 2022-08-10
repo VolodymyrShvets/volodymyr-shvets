@@ -1,5 +1,6 @@
-package com.epam.paymentsystem.service.exception;
+package com.epam.paymentsystem.service.exception.notfound;
 
+import com.epam.paymentsystem.service.exception.ServiceException;
 import com.epam.paymentsystem.service.model.enums.ErrorType;
 
 public class BankAccountNotFoundException extends ServiceException {

@@ -1,4 +1,4 @@
-package com.epam.paymentsystem.api;
+package com.epam.paymentsystem.service.api;
 
 import com.epam.paymentsystem.service.model.Payment;
 import io.swagger.annotations.Api;

@@ -1,17 +1,17 @@
 package com.epam.paymentsystem.service.repository;
 
 import com.epam.paymentsystem.service.model.BankAccount;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface BankAccountRepository {
-    BankAccount getBankAccount(String bankAccountID);
+public interface BankAccountRepository extends JpaRepository<BankAccount, Long> {
+    Optional<BankAccount> findByAccountID(String id);
 
-    BankAccount createBankAccount(BankAccount bankAccount);
+    List<BankAccount> findByUser(String userId);
 
-    List<BankAccount> listAccounts(String userID);
+    boolean existsByAccountID(String id);
 
-    BankAccount blockAccount(String bankAccountID);
-
-    BankAccount unblockAccount(String bankAccountID);
+    boolean existsByUserID(String userId);
 }
